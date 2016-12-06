@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pwnavor.ljv1.Launch_Screen"
+    style="@style/Theme.AppCompat.NoActionBar"
+    android:background="@drawable/bgrpic1">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="200dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/thumb_img"
+            android:src="@drawable/tg"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/loginbutton"
+            android:background="#00ffffff"
+            android:clickable="true"
+            android:enabled="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
