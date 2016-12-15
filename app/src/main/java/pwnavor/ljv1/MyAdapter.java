@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jahi on 10/26/2016.
- */
 
+
+/**
+ * Created by Jahi on 9/22/2016.
+ */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     ArrayList<FeedItem>feedItems;
     Context context;
@@ -19,6 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         this.feedItems=feedItems;
         this.context=context;
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.custom_row_news_item,parent,false);
@@ -29,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
+
     }
 
     @Override
@@ -37,8 +40,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
+
         }
     }
 }

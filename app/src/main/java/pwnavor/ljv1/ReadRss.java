@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -20,27 +21,23 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 
+
 /**
- * Created by Jahi on 10/21/2016.
+ * Created by Jahi on 9/21/2016.
  */
-
-public class ReadRss extends AsyncTask<Void,Void,Void>{
-
-
+public class ReadRss extends AsyncTask<Void, Void, Void> {
     Context context;
-    String address="http://www.sciencemag.org/rss/news_current.xml";
+    String address="https://www.sciencemag.org/rss/news_current.xml";
     ProgressDialog progressDialog;
     ArrayList<FeedItem>feedItems;
     RecyclerView recyclerView;
     URL url;
-    public ReadRss(RecyclerView recyclerView, Context context){
-        this.context=context;
+    public ReadRss(Context context, RecyclerView recyclerView){
         this.recyclerView=recyclerView;
-        progressDialog=new ProgressDialog(context);
+        this.context=context;
+        progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
     }
-
-
 
     @Override
     protected void onPreExecute() {
@@ -59,7 +56,7 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
 
     @Override
     protected Void doInBackground(Void... voids) {
-        ProcessXml (Getdata());
+        ProcessXml(Getdata());
         return null;
     }
 
@@ -78,39 +75,39 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
                         Node current=itemchilds.item(j);
                         if (current.getNodeName().equalsIgnoreCase("title")){
                             item.setTitle(current.getTextContent());
-                        }else if (current.getNodeName().equalsIgnoreCase("description")) {
+                        }else if (current.getNodeName().equalsIgnoreCase("description")){
                             item.setDescription(current.getTextContent());
-                        }else if (current.getNodeName().equalsIgnoreCase("pubdate")) {
+                        }else if (current.getNodeName().equalsIgnoreCase("pubDate")){
                             item.setPubDate(current.getTextContent());
-                        }else if (current.getNodeName().equalsIgnoreCase("link")) {
+                        }else if (current.getNodeName().equalsIgnoreCase("link")){
                             item.setLink(current.getTextContent());
-                        }else if (current.getNodeName().equalsIgnoreCase("media:thumbnail")) {
+                        }else if (current.getNodeName().equalsIgnoreCase("media:thumbnail")){
                             String url=current.getAttributes().item(0).getTextContent();
                             item.setThumbnailUrl(url);
                         }
 
                     }
                     feedItems.add(item);
-
+                    Log.d("itemThumnailUrl",item.getThumbnailUrl());
                 }
+
             }
         }
     }
 
     public Document Getdata(){
-        try {
+        try{
             url=new URL(address);
-            HttpURLConnection connection= (HttpURLConnection) url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             InputStream inputStream=connection.getInputStream();
             DocumentBuilderFactory builderFactory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=builderFactory.newDocumentBuilder();
-            Document xmlDoc= builder.parse(inputStream);
+            Document xmlDoc = builder.parse(inputStream);
             return xmlDoc;
-
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 }

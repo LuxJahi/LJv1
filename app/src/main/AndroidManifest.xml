@@ -46,7 +46,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pwnavor.ljv1.Launch_Screen" />
         </activity>
-        <activity android:name=".Home_Page_Tab_1" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

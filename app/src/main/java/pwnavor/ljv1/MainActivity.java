@@ -1,9 +1,3 @@
-/**
- *
- *
- *
-
-
 package pwnavor.ljv1;
 
 import android.os.Bundle;
@@ -23,15 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView= (RecyclerView) findViewById(R.id.recyclerView);
 
-        ReadRss readRss = new ReadRss(recyclerView, this);
+        ReadRss readRss = new ReadRss(this, recyclerView);
         readRss.execute();
 
     }
 
 
 }
-
-*
-*
-*
-*/

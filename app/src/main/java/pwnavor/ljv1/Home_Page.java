@@ -46,6 +46,8 @@ public class Home_Page extends AppCompatActivity {
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
+
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -90,8 +92,7 @@ public class Home_Page extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
-        }
+
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -117,9 +118,11 @@ public class Home_Page extends AppCompatActivity {
 
 
 
-                View rootView = inflater.inflate(R.layout.activity_main, container,false);
-                TextView textView = (TextView) rootView.findViewById(R.id.Home);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+                View rootView = inflater.inflate(R.layout.activity_home_page_tab_1, container,false);
+                //TextView textView = (TextView) rootView.findViewById(R.id.Home);
+                //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
 
 
 
@@ -165,6 +168,7 @@ public class Home_Page extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+
             return PlaceholderFragment.newInstance(position + 1);
         }
 
