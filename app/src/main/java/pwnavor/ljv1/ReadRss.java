@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-
-
 /**
  * Created by Jahi on 9/21/2016.
  */

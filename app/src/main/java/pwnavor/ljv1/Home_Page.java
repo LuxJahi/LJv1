@@ -117,9 +117,9 @@ public class Home_Page extends AppCompatActivity {
 
 
 
+                setContentView(R.layout.activity_main);
 
-
-                View rootView = inflater.inflate(R.layout.activity_home_page_tab_1, container,false);
+                //View rootView = inflater.inflate(R.layout.activity_home_page_tab_1, container,false);
                 //TextView textView = (TextView) rootView.findViewById(R.id.Home);
                 //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
