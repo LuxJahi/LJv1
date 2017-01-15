@@ -1,5 +1,6 @@
 package pwnavor.ljv1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.w3c.dom.Document;
+
+import java.util.ArrayList;
 
 public class Home_Page extends AppCompatActivity {
 
@@ -34,7 +40,7 @@ public class Home_Page extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__page);
@@ -55,18 +61,36 @@ public class Home_Page extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        ReadRss readRss = new ReadRss(this, recyclerView);
+        readRss.getClass();
+        Context context = this;
+
+        Document data = readRss.Getdata();
+        ArrayList<FeedItem> feedItems = readRss.ProcessXml(data);
+
+
+
+
+        MyAdapter adapter=new MyAdapter(context,feedItems);
+
+        recyclerView.setAdapter(adapter);
+
+
+
 
     }
 
 
-    @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home__page, menu);
         return true;
     }
 
-    @Override
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -106,7 +130,7 @@ public class Home_Page extends AppCompatActivity {
             return fragment;
         }
 
-        @Override
+
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             if(getArguments().getInt(ARG_SECTION_NUMBER)==1)
             {
@@ -117,15 +141,11 @@ public class Home_Page extends AppCompatActivity {
 
 
 
-                setContentView(R.layout.activity_main);
+                //setContentView(R.layout.activity_main);
 
-                //View rootView = inflater.inflate(R.layout.activity_home_page_tab_1, container,false);
+                View rootView = inflater.inflate(R.layout.content_main, container,false);
                 //TextView textView = (TextView) rootView.findViewById(R.id.Home);
                 //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-
-
-
-
 
 
 
@@ -164,7 +184,7 @@ public class Home_Page extends AppCompatActivity {
             super(fm);
         }
 
-        @Override
+
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
@@ -172,13 +192,13 @@ public class Home_Page extends AppCompatActivity {
             return PlaceholderFragment.newInstance(position + 1);
         }
 
-        @Override
+
         public int getCount() {
             // Show 3 total pages.
             return 3;
         }
 
-        @Override
+
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:

@@ -336,7 +336,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 
             if (success) {
                 finish();
-                Intent homePage = new Intent(Login.this, MainActivity.class);
+                Intent homePage = new Intent(Login.this, Home_Page.class);
                 Login.this.startActivity(homePage);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

@@ -44,7 +44,7 @@ public class ReadRss extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    public void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         progressDialog.dismiss();
         MyAdapter adapter=new MyAdapter(context,feedItems);
@@ -58,7 +58,7 @@ public class ReadRss extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-    private void ProcessXml(Document data) {
+    public ArrayList<FeedItem> ProcessXml(Document data) {
         if (data!=null) {
             feedItems=new ArrayList<>();
             Element root=data.getDocumentElement();
@@ -91,6 +91,7 @@ public class ReadRss extends AsyncTask<Void, Void, Void> {
 
             }
         }
+        return null;
     }
 
     public Document Getdata(){
@@ -108,4 +109,6 @@ public class ReadRss extends AsyncTask<Void, Void, Void> {
         }
         return null;
     }
+
+
 }

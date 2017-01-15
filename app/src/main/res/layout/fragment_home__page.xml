@@ -9,6 +9,8 @@
     tools:context="pwnavor.ljv1.Home_Page$PlaceholderFragment"
     android:background="@drawable/liz_1">
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
